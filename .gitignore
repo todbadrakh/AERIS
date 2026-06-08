@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+
+# Large local model/data artifacts
+ML-RF_Supplementary_material/
+model/*.joblib
+model/*.pt
+data/Dataset_feature+CN.csv
+data/Dataset_feture+CN_exp.csv
+
+# Generated reports and run artifacts
+results/
+agent_paper_B_output.txt
+*.html

@@ -29,6 +29,7 @@ __all__ = [
     "parse_structure_string",
     "load_structure_model",
     "build_features_in_ckpt_order",
+    "compute_magpie_df",
     "predict_energy",
     "find_structure_in_datasets",
     "find_structure_templates",
@@ -226,6 +227,10 @@ def _compute_magpie_df(compositions: pd.Series) -> pd.DataFrame:
 
     feat_df = feat_df.drop(columns=[c for c in feat_df.columns if c == "comp_obj"], errors="ignore")
     return feat_df
+
+def compute_magpie_df(compositions: pd.Series) -> pd.DataFrame:
+    """Public wrapper for computing Magpie composition descriptors."""
+    return _compute_magpie_df(compositions)
 
 def build_features_in_ckpt_order(
     df: pd.DataFrame,

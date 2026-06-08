@@ -707,6 +707,24 @@ def write_outputs(outdir: Path, phases: Dict[str, Phase], geoms: Dict[str, Geome
             f"| {phase} | `qe_geometry/{phase}/vc-relax.in` | "
             f"`qe_geometry/{phase}/submit.sh` | `cd qe_geometry/{phase} && sbatch submit.sh` |"
         )
+    lines += ["\n## QE Input File Contents\n"]
+    for phase, g in sorted(geoms.items()):
+        lines += [
+            f"### {phase}: vc-relax.in",
+            "```text",
+            qe_input(phase, g, qe).rstrip(),
+            "```",
+            "",
+        ]
+    lines += ["\n## Submit Script Contents\n"]
+    for phase in sorted(geoms):
+        lines += [
+            f"### {phase}: submit.sh",
+            "```bash",
+            submit_script(phase, qe, submit).rstrip(),
+            "```",
+            "",
+        ]
     lines += [
         "\n## Total Energies\n",
         "| Phase | Total energy (eV) | eV/atom | n atoms | Source |",
