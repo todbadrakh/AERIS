@@ -1,0 +1,40 @@
+{
+  "phase": "O2",
+  "source": "generated:diatomic-reference",
+  "cell_units": "angstrom",
+  "cell_parameters": [
+    [
+      15.0,
+      0,
+      0
+    ],
+    [
+      0,
+      15.0,
+      0
+    ],
+    [
+      0,
+      0,
+      15.0
+    ]
+  ],
+  "atomic_position_units": "angstrom",
+  "atomic_positions": [
+    {
+      "element": "O",
+      "x": 7.5,
+      "y": 7.5,
+      "z": 6.89625,
+      "coordinate_type": "angstrom"
+    },
+    {
+      "element": "O",
+      "x": 7.5,
+      "y": 7.5,
+      "z": 8.10375,
+      "coordinate_type": "angstrom"
+    }
+  ],
+  "notes": "Generated O2 molecule in 15 A cubic box; initial bond length 1.2075 A; spin-polarized triplet reference recommended."
+}

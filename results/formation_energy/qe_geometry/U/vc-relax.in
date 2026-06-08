@@ -1,0 +1,47 @@
+&CONTROL
+  prefix = 'U.vc-relax'
+  pseudo_dir = '~/sample-pseudo-dir'
+  calculation = 'vc-relax'
+  forc_conv_thr = 1.0d-4
+  nstep = 200
+/
+
+&SYSTEM
+  ibrav = 0
+  nat =  4
+  ntyp = 1
+  ecutwfc = 30
+  ecutrho = 120
+  occupations = 'smearing'
+  smearing = 'mv'
+  degauss = 0.01
+/
+
+&ELECTRONS
+  conv_thr = 1.0d-8
+  mixing_beta = 0.2
+/
+
+&IONS
+  ion_dynamics = 'bfgs'
+/
+
+&CELL
+  cell_dynamics = 'bfgs'
+  press_conv_thr = 0.5
+/
+
+CELL_PARAMETERS angstrom
+   2.8540000000   0.0000000000   0.0000000000
+   0.0000000000   5.8690000000   0.0000000000
+   0.0000000000   0.0000000000   4.9550000000
+ATOMIC_SPECIES
+  U    238.029000  U.pbe-spfn-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  U    0.0000000000  0.1020000000  0.2500000000
+  U    0.5000000000  0.3980000000  0.2500000000
+  U    0.5000000000  0.6020000000  0.7500000000
+  U    0.0000000000  0.8980000000  0.7500000000
+K_POINTS gamma
+
+! NOTE: Generated orthorhombic-alpha starting geometry for elemental reference. Relax and confirm this is the intended reference phase.

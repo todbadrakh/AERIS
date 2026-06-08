@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>formation_energy_report</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="formation-energy-dft-scaffold-report">Formation Energy DFT
+Scaffold Report</h1>
+<p>No RF or NN model predictions are used in this workflow.</p>
+<h2 id="formation-reactions">Formation Reactions</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Formula</th>
+<th>Formation reaction</th>
+<th>Formation energy formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UO2</td>
+<td><code>0.25U4(s) + O2(g) -&gt; UO2(s)</code></td>
+<td><code>E_form(UO2) = [E(UO2) - 0.25E(U4) - E(O2)] / 3</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="phase-inventory">Phase Inventory</h2>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Role</th>
+<th>Formula</th>
+<th>Structure source</th>
+<th style="text-align: right;">nsites</th>
+<th style="text-align: right;">Space group</th>
+<th>QE geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O2</td>
+<td>reference</td>
+<td>O2</td>
+<td>generated:diatomic-reference</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"></td>
+<td>cell + positions</td>
+</tr>
+<tr>
+<td>U</td>
+<td>reference</td>
+<td>U</td>
+<td>generated:elemental-orthorhombic-alpha</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"></td>
+<td>cell + positions</td>
+</tr>
+<tr>
+<td>UO2</td>
+<td>compound</td>
+<td>UO2</td>
+<td>AERIS dataset:primary</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">225</td>
+<td>cell + positions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="qe-input-artifacts">QE Input Artifacts</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>QE input</th>
+<th>Submit script</th>
+<th>Geometry block</th>
+<th>Structured JSON</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O2</td>
+<td><code>qe_geometry/O2/vc-relax.in</code></td>
+<td><code>qe_geometry/O2/submit.sh</code></td>
+<td><code>qe_geometry/O2/geometry.in</code></td>
+<td><code>qe_geometry/O2/geometry.json</code></td>
+<td>Generated O2 molecule in 15 A cubic box; initial bond length 1.2075
+A; spin-polarized triplet reference recommended.</td>
+</tr>
+<tr>
+<td>U</td>
+<td><code>qe_geometry/U/vc-relax.in</code></td>
+<td><code>qe_geometry/U/submit.sh</code></td>
+<td><code>qe_geometry/U/geometry.in</code></td>
+<td><code>qe_geometry/U/geometry.json</code></td>
+<td>Generated orthorhombic-alpha starting geometry for elemental
+reference. Relax and confirm this is the intended reference phase.</td>
+</tr>
+<tr>
+<td>UO2</td>
+<td><code>qe_geometry/UO2/vc-relax.in</code></td>
+<td><code>qe_geometry/UO2/submit.sh</code></td>
+<td><code>qe_geometry/UO2/geometry.in</code></td>
+<td><code>qe_geometry/UO2/geometry.json</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="qe-run-files">QE Run Files</h2>
+<p>Run each job from its phase directory so the submit script can find
+<code>vc-relax.in</code>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Input file</th>
+<th>Submit script</th>
+<th>Submit command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O2</td>
+<td><code>qe_geometry/O2/vc-relax.in</code></td>
+<td><code>qe_geometry/O2/submit.sh</code></td>
+<td><code>cd qe_geometry/O2 &amp;&amp; sbatch submit.sh</code></td>
+</tr>
+<tr>
+<td>U</td>
+<td><code>qe_geometry/U/vc-relax.in</code></td>
+<td><code>qe_geometry/U/submit.sh</code></td>
+<td><code>cd qe_geometry/U &amp;&amp; sbatch submit.sh</code></td>
+</tr>
+<tr>
+<td>UO2</td>
+<td><code>qe_geometry/UO2/vc-relax.in</code></td>
+<td><code>qe_geometry/UO2/submit.sh</code></td>
+<td><code>cd qe_geometry/UO2 &amp;&amp; sbatch submit.sh</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="qe-input-file-contents">QE Input File Contents</h2>
+<h3 id="o2-vc-relax.in">O2: vc-relax.in</h3>
+<pre class="text"><code>&amp;CONTROL
+  prefix = &#39;O2.vc-relax&#39;
+  pseudo_dir = &#39;~/sample-pseudo-dir&#39;
+  calculation = &#39;vc-relax&#39;
+  forc_conv_thr = 1.0d-4
+  nstep = 200
+/
+
+&amp;SYSTEM
+  ibrav = 0
+  nat =  2
+  ntyp = 1
+  ecutwfc = 30
+  ecutrho = 120
+  occupations = &#39;smearing&#39;
+  smearing = &#39;mv&#39;
+  degauss = 0.01
+  nspin = 2
+  starting_magnetization(1) = 1.0
+/
+
+&amp;ELECTRONS
+  conv_thr = 1.0d-8
+  mixing_beta = 0.2
+/
+
+&amp;IONS
+  ion_dynamics = &#39;bfgs&#39;
+/
+
+&amp;CELL
+  cell_dynamics = &#39;bfgs&#39;
+  press_conv_thr = 0.5
+/
+
+CELL_PARAMETERS angstrom
+   15.0000000000   0.0000000000   0.0000000000
+   0.0000000000   15.0000000000   0.0000000000
+   0.0000000000   0.0000000000   15.0000000000
+ATOMIC_SPECIES
+  O    15.999000  O.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS angstrom
+  O    7.5000000000  7.5000000000  6.8962500000
+  O    7.5000000000  7.5000000000  8.1037500000
+K_POINTS gamma
+
+! NOTE: Generated O2 molecule in 15 A cubic box; initial bond length 1.2075 A; spin-polarized triplet reference recommended.</code></pre>
+<h3 id="u-vc-relax.in">U: vc-relax.in</h3>
+<pre class="text"><code>&amp;CONTROL
+  prefix = &#39;U.vc-relax&#39;
+  pseudo_dir = &#39;~/sample-pseudo-dir&#39;
+  calculation = &#39;vc-relax&#39;
+  forc_conv_thr = 1.0d-4
+  nstep = 200
+/
+
+&amp;SYSTEM
+  ibrav = 0
+  nat =  4
+  ntyp = 1
+  ecutwfc = 30
+  ecutrho = 120
+  occupations = &#39;smearing&#39;
+  smearing = &#39;mv&#39;
+  degauss = 0.01
+/
+
+&amp;ELECTRONS
+  conv_thr = 1.0d-8
+  mixing_beta = 0.2
+/
+
+&amp;IONS
+  ion_dynamics = &#39;bfgs&#39;
+/
+
+&amp;CELL
+  cell_dynamics = &#39;bfgs&#39;
+  press_conv_thr = 0.5
+/
+
+CELL_PARAMETERS angstrom
+   2.8540000000   0.0000000000   0.0000000000
+   0.0000000000   5.8690000000   0.0000000000
+   0.0000000000   0.0000000000   4.9550000000
+ATOMIC_SPECIES
+  U    238.029000  U.pbe-spfn-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  U    0.0000000000  0.1020000000  0.2500000000
+  U    0.5000000000  0.3980000000  0.2500000000
+  U    0.5000000000  0.6020000000  0.7500000000
+  U    0.0000000000  0.8980000000  0.7500000000
+K_POINTS gamma
+
+! NOTE: Generated orthorhombic-alpha starting geometry for elemental reference. Relax and confirm this is the intended reference phase.</code></pre>
+<h3 id="uo2-vc-relax.in">UO2: vc-relax.in</h3>
+<pre class="text"><code>&amp;CONTROL
+  prefix = &#39;UO2.vc-relax&#39;
+  pseudo_dir = &#39;~/sample-pseudo-dir&#39;
+  calculation = &#39;vc-relax&#39;
+  forc_conv_thr = 1.0d-4
+  nstep = 200
+/
+
+&amp;SYSTEM
+  ibrav = 0
+  nat =  3
+  ntyp = 2
+  ecutwfc = 30
+  ecutrho = 120
+  occupations = &#39;smearing&#39;
+  smearing = &#39;mv&#39;
+  degauss = 0.01
+/
+
+&amp;ELECTRONS
+  conv_thr = 1.0d-8
+  mixing_beta = 0.2
+/
+
+&amp;IONS
+  ion_dynamics = &#39;bfgs&#39;
+/
+
+&amp;CELL
+  cell_dynamics = &#39;bfgs&#39;
+  press_conv_thr = 0.5
+/
+
+CELL_PARAMETERS angstrom
+   3.8565670000   0.0000000000   0.0000000000
+   1.9282835000   3.3398849934   0.0000000000
+   1.9282835000   1.1132949978   3.1488737696
+ATOMIC_SPECIES
+  U    238.029000  U.pbe-spfn-kjpaw_psl.1.0.0.UPF
+  O    15.999000  O.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  U    0.5000000000  0.5000000000  0.5000000000
+  O    0.2500000000  0.2500000000  0.2500000000
+  O    0.7500000000  0.7500000000  0.7500000000
+K_POINTS gamma</code></pre>
+<h2 id="submit-script-contents">Submit Script Contents</h2>
+<h3 id="o2-submit.sh">O2: submit.sh</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A stf243</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 1:00:00</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J O2.vc-relax</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=%x-%j.out</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="va">prefix</span><span class="op">=</span>O2.vc-relax</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="va">input</span><span class="op">=</span>vc-relax.in</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc-native/14.2</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cray-mpich/9.1.0</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load rocm/7.0.2</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load q-e-sirius/1.0.2-mpi-omp</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">HDF5_USE_FILE_LOCKING</span><span class="op">=</span>FALSE</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SIRIUS_VERBOSITY</span><span class="op">=</span>1</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-N</span> 1 <span class="at">-n</span> 8 <span class="at">-c</span> 7 <span class="at">--gpus-per-task</span><span class="op">=</span>1 <span class="at">--gpu-bind</span><span class="op">=</span>closest pw.x <span class="at">-in</span> <span class="va">${input}</span> <span class="op">&gt;</span> <span class="va">${prefix}</span>.log</span></code></pre></div>
+<h3 id="u-submit.sh">U: submit.sh</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A stf243</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 1:00:00</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J U.vc-relax</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=%x-%j.out</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="va">prefix</span><span class="op">=</span>U.vc-relax</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="va">input</span><span class="op">=</span>vc-relax.in</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc-native/14.2</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cray-mpich/9.1.0</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load rocm/7.0.2</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load q-e-sirius/1.0.2-mpi-omp</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">HDF5_USE_FILE_LOCKING</span><span class="op">=</span>FALSE</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SIRIUS_VERBOSITY</span><span class="op">=</span>1</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-N</span> 1 <span class="at">-n</span> 8 <span class="at">-c</span> 7 <span class="at">--gpus-per-task</span><span class="op">=</span>1 <span class="at">--gpu-bind</span><span class="op">=</span>closest pw.x <span class="at">-in</span> <span class="va">${input}</span> <span class="op">&gt;</span> <span class="va">${prefix}</span>.log</span></code></pre></div>
+<h3 id="uo2-submit.sh">UO2: submit.sh</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A stf243</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 1:00:00</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J UO2.vc-relax</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=%x-%j.out</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="va">prefix</span><span class="op">=</span>UO2.vc-relax</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="va">input</span><span class="op">=</span>vc-relax.in</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load gcc-native/14.2</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cray-mpich/9.1.0</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load rocm/7.0.2</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load q-e-sirius/1.0.2-mpi-omp</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">HDF5_USE_FILE_LOCKING</span><span class="op">=</span>FALSE</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SIRIUS_VERBOSITY</span><span class="op">=</span>1</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-N</span> 1 <span class="at">-n</span> 8 <span class="at">-c</span> 7 <span class="at">--gpus-per-task</span><span class="op">=</span>1 <span class="at">--gpu-bind</span><span class="op">=</span>closest pw.x <span class="at">-in</span> <span class="va">${input}</span> <span class="op">&gt;</span> <span class="va">${prefix}</span>.log</span></code></pre></div>
+<h2 id="total-energies">Total Energies</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th style="text-align: right;">Total energy (eV)</th>
+<th style="text-align: right;">eV/atom</th>
+<th style="text-align: right;">n atoms</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<h2 id="formation-energies">Formation Energies</h2>
+<p>No formation energies were computed because required QE total
+energies are missing.</p>
+<h2 id="missing-inputs">Missing Inputs</h2>
+<ul>
+<li>UO2: compound total energy for UO2, reference total energy for U
+(U), reference total energy for O (O2)</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Confirm elemental reference phases before using values
+scientifically.</li>
+<li>QE calculations must use consistent pseudopotentials, functionals,
+cutoffs, k-points, smearing, and spin settings.</li>
+<li>Negative formation energy means stable relative to selected
+elemental references, not necessarily stable on the convex hull.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,45 @@
+&CONTROL
+  prefix = 'N2.vc-relax'
+  pseudo_dir = '/lustre/orion/nfu107/proj-shared/todbadrakh/pseudopotentials'
+  calculation = 'vc-relax'
+  forc_conv_thr = 1.0d-4
+  nstep = 200
+/
+
+&SYSTEM
+  ibrav = 0
+  nat =  2
+  ntyp = 1
+  ecutwfc = 30
+  ecutrho = 120
+  occupations = 'smearing'
+  smearing = 'mv'
+  degauss = 0.01
+/
+
+&ELECTRONS
+  conv_thr = 1.0d-8
+  mixing_beta = 0.2
+/
+
+&IONS
+  ion_dynamics = 'bfgs'
+/
+
+&CELL
+  cell_dynamics = 'bfgs'
+  press_conv_thr = 0.5
+/
+
+CELL_PARAMETERS angstrom
+   15.0000000000   0.0000000000   0.0000000000
+   0.0000000000   15.0000000000   0.0000000000
+   0.0000000000   0.0000000000   15.0000000000
+ATOMIC_SPECIES
+  N    14.007000  N.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS angstrom
+  N    7.5000000000  7.5000000000  6.9511500000
+  N    7.5000000000  7.5000000000  8.0488500000
+K_POINTS gamma
+
+! NOTE: Generated N2 molecule in 15 A cubic box; initial bond length 1.0977 A; closed-shell singlet.

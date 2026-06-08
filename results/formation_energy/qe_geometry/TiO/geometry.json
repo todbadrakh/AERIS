@@ -1,0 +1,68 @@
+{
+  "phase": "TiO",
+  "source": "AERIS dataset:primary",
+  "cell_units": "angstrom",
+  "cell_parameters": [
+    [
+      2.873313,
+      0,
+      0
+    ],
+    [
+      3.0549328756386367e-16,
+      4.989084,
+      0
+    ],
+    [
+      3.054935324932235e-16,
+      -2.494542265568909,
+      4.32067795108989
+    ]
+  ],
+  "atomic_position_units": "crystal",
+  "atomic_positions": [
+    {
+      "element": "Ti",
+      "x": 0.5,
+      "y": 0.333318,
+      "z": 0.666668,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "Ti",
+      "x": 0.5,
+      "y": 0.666651,
+      "z": 0.333332,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "Ti",
+      "x": -0.0,
+      "y": 0.999981,
+      "z": 0.0,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "O",
+      "x": -0.0,
+      "y": 0.394421,
+      "z": -0.0,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "O",
+      "x": -0.0,
+      "y": 0.605544,
+      "z": 0.605559,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "O",
+      "x": 0.0,
+      "y": 0.999985,
+      "z": 0.394441,
+      "coordinate_type": "crystal"
+    }
+  ],
+  "notes": null
+}

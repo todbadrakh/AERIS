@@ -1,0 +1,10 @@
+CELL_PARAMETERS angstrom
+   2.9510000000   0.0000000000   0.0000000000
+  -1.4755000000   2.5556409666   0.0000000000
+   0.0000000000   0.0000000000   4.6840000000
+
+ATOMIC_POSITIONS crystal
+  Ti   0.3333333333  0.6666666667  0.2500000000
+  Ti   0.6666666667  0.3333333333  0.7500000000
+
+# NOTE: Generated hcp starting geometry for elemental reference. Relax and confirm this is the intended reference phase.

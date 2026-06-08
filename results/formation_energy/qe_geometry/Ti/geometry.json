@@ -1,0 +1,40 @@
+{
+  "phase": "Ti",
+  "source": "generated:elemental-hcp",
+  "cell_units": "angstrom",
+  "cell_parameters": [
+    [
+      2.951,
+      0,
+      0
+    ],
+    [
+      -1.4755,
+      2.5556409665678785,
+      0
+    ],
+    [
+      0,
+      0,
+      4.684
+    ]
+  ],
+  "atomic_position_units": "crystal",
+  "atomic_positions": [
+    {
+      "element": "Ti",
+      "x": 0.3333333333333333,
+      "y": 0.6666666666666666,
+      "z": 0.25,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "Ti",
+      "x": 0.6666666666666666,
+      "y": 0.3333333333333333,
+      "z": 0.75,
+      "coordinate_type": "crystal"
+    }
+  ],
+  "notes": "Generated hcp starting geometry for elemental reference. Relax and confirm this is the intended reference phase."
+}

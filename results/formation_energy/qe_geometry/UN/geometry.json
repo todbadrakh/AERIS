@@ -1,0 +1,40 @@
+{
+  "phase": "UN",
+  "source": "AERIS dataset:primary",
+  "cell_units": "angstrom",
+  "cell_parameters": [
+    [
+      3.448828,
+      0,
+      0
+    ],
+    [
+      1.7244132393549843,
+      2.986771945741129,
+      0
+    ],
+    [
+      1.7244126659359031,
+      0.9955905181613174,
+      2.8159559928443683
+    ]
+  ],
+  "atomic_position_units": "crystal",
+  "atomic_positions": [
+    {
+      "element": "U",
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "N",
+      "x": 0.0,
+      "y": -0.0,
+      "z": 0.0,
+      "coordinate_type": "crystal"
+    }
+  ],
+  "notes": null
+}

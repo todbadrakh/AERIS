@@ -1,0 +1,44 @@
+&CONTROL
+  prefix = 'UN.vc-relax'
+  pseudo_dir = '/lustre/orion/nfu107/proj-shared/todbadrakh/pseudopotentials'
+  calculation = 'vc-relax'
+  forc_conv_thr = 1.0d-4
+  nstep = 200
+/
+
+&SYSTEM
+  ibrav = 0
+  nat =  2
+  ntyp = 2
+  ecutwfc = 30
+  ecutrho = 120
+  occupations = 'smearing'
+  smearing = 'mv'
+  degauss = 0.01
+/
+
+&ELECTRONS
+  conv_thr = 1.0d-8
+  mixing_beta = 0.2
+/
+
+&IONS
+  ion_dynamics = 'bfgs'
+/
+
+&CELL
+  cell_dynamics = 'bfgs'
+  press_conv_thr = 0.5
+/
+
+CELL_PARAMETERS angstrom
+   3.4488280000   0.0000000000   0.0000000000
+   1.7244132394   2.9867719457   0.0000000000
+   1.7244126659   0.9955905182   2.8159559928
+ATOMIC_SPECIES
+  U    238.029000  U.pbe-spfn-kjpaw_psl.1.0.0.UPF
+  N    14.007000  N.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  U    0.5000000000  0.5000000000  0.5000000000
+  N    0.0000000000 -0.0000000000  0.0000000000
+K_POINTS gamma

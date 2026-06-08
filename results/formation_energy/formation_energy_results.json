@@ -1,0 +1,274 @@
+{
+  "runtime_sec": 16.46666121482849,
+  "phase_records": {
+    "UO2": {
+      "name": "UO2",
+      "formula": "UO2",
+      "role": "compound",
+      "composition": {
+        "U": 1.0,
+        "O": 2.0
+      },
+      "n_atoms_formula": 3.0,
+      "structure_source": "AERIS dataset:primary",
+      "structure": {
+        "database": "primary",
+        "raw_structure_string": "Full Formula (U1 O2)\nReduced Formula: UO2\nabc   :   3.856567   3.856567   3.856567\nangles:  60.000000  60.000000  60.000000\npbc   :       True       True       True\nSites (3)\n  #  SP       a     b     c    magmom\n---  ----  ----  ----  ----  --------\n  0  U     0.5   0.5   0.5      1.997\n  1  O     0.25  0.25  0.25    -0.029\n  2  O     0.75  0.75  0.75    -0.029",
+        "spacegroup_number": 225,
+        "density_atomic": 13.5196843848886,
+        "CN_avg": 5.333333333333333,
+        "CN_min": 4.0,
+        "CN_max": 8.0,
+        "nsites": 3,
+        "volume": 40.55905315466581,
+        "density": 11.055276852979338
+      },
+      "notes": null
+    },
+    "U": {
+      "name": "U",
+      "formula": "U",
+      "role": "reference",
+      "composition": {
+        "U": 1.0
+      },
+      "n_atoms_formula": 1.0,
+      "structure_source": "generated:elemental-orthorhombic-alpha",
+      "structure": {
+        "nsites": 4,
+        "cell_parameters_angstrom": [
+          [
+            2.854,
+            0,
+            0
+          ],
+          [
+            0,
+            5.869,
+            0
+          ],
+          [
+            0,
+            0,
+            4.955
+          ]
+        ]
+      },
+      "notes": "Generated orthorhombic-alpha starting geometry for elemental reference. Relax and confirm this is the intended reference phase."
+    },
+    "O2": {
+      "name": "O2",
+      "formula": "O2",
+      "role": "reference",
+      "composition": {
+        "O": 2.0
+      },
+      "n_atoms_formula": 2.0,
+      "structure_source": "generated:diatomic-reference",
+      "structure": {
+        "nsites": 2,
+        "cell_parameters_angstrom": [
+          [
+            15.0,
+            0,
+            0
+          ],
+          [
+            0,
+            15.0,
+            0
+          ],
+          [
+            0,
+            0,
+            15.0
+          ]
+        ]
+      },
+      "notes": "Generated O2 molecule in 15 A cubic box; initial bond length 1.2075 A; spin-polarized triplet reference recommended."
+    }
+  },
+  "qe_geometries": {
+    "UO2": {
+      "phase": "UO2",
+      "source": "AERIS dataset:primary",
+      "cell_units": "angstrom",
+      "cell_parameters": [
+        [
+          3.856567,
+          0,
+          0
+        ],
+        [
+          1.9282835000000005,
+          3.339884993396741,
+          0
+        ],
+        [
+          1.9282835000000005,
+          1.1132949977989137,
+          3.1488737696186977
+        ]
+      ],
+      "atomic_position_units": "crystal",
+      "atomic_positions": [
+        {
+          "element": "U",
+          "x": 0.5,
+          "y": 0.5,
+          "z": 0.5,
+          "coordinate_type": "crystal"
+        },
+        {
+          "element": "O",
+          "x": 0.25,
+          "y": 0.25,
+          "z": 0.25,
+          "coordinate_type": "crystal"
+        },
+        {
+          "element": "O",
+          "x": 0.75,
+          "y": 0.75,
+          "z": 0.75,
+          "coordinate_type": "crystal"
+        }
+      ],
+      "notes": null
+    },
+    "U": {
+      "phase": "U",
+      "source": "generated:elemental-orthorhombic-alpha",
+      "cell_units": "angstrom",
+      "cell_parameters": [
+        [
+          2.854,
+          0,
+          0
+        ],
+        [
+          0,
+          5.869,
+          0
+        ],
+        [
+          0,
+          0,
+          4.955
+        ]
+      ],
+      "atomic_position_units": "crystal",
+      "atomic_positions": [
+        {
+          "element": "U",
+          "x": 0,
+          "y": 0.102,
+          "z": 0.25,
+          "coordinate_type": "crystal"
+        },
+        {
+          "element": "U",
+          "x": 0.5,
+          "y": 0.398,
+          "z": 0.25,
+          "coordinate_type": "crystal"
+        },
+        {
+          "element": "U",
+          "x": 0.5,
+          "y": 0.602,
+          "z": 0.75,
+          "coordinate_type": "crystal"
+        },
+        {
+          "element": "U",
+          "x": 0,
+          "y": 0.898,
+          "z": 0.75,
+          "coordinate_type": "crystal"
+        }
+      ],
+      "notes": "Generated orthorhombic-alpha starting geometry for elemental reference. Relax and confirm this is the intended reference phase."
+    },
+    "O2": {
+      "phase": "O2",
+      "source": "generated:diatomic-reference",
+      "cell_units": "angstrom",
+      "cell_parameters": [
+        [
+          15.0,
+          0,
+          0
+        ],
+        [
+          0,
+          15.0,
+          0
+        ],
+        [
+          0,
+          0,
+          15.0
+        ]
+      ],
+      "atomic_position_units": "angstrom",
+      "atomic_positions": [
+        {
+          "element": "O",
+          "x": 7.5,
+          "y": 7.5,
+          "z": 6.89625,
+          "coordinate_type": "angstrom"
+        },
+        {
+          "element": "O",
+          "x": 7.5,
+          "y": 7.5,
+          "z": 8.10375,
+          "coordinate_type": "angstrom"
+        }
+      ],
+      "notes": "Generated O2 molecule in 15 A cubic box; initial bond length 1.2075 A; spin-polarized triplet reference recommended."
+    }
+  },
+  "qe_input_settings": {
+    "pseudo_dir": "~/sample-pseudo-dir",
+    "calculation": "vc-relax",
+    "ecutwfc": 30.0,
+    "ecutrho": 120.0,
+    "occupations": "smearing",
+    "smearing": "mv",
+    "degauss": 0.01,
+    "forc_conv_thr": "1.0d-4",
+    "nstep": 200,
+    "conv_thr": "1.0d-8",
+    "mixing_beta": 0.2,
+    "ion_dynamics": "bfgs",
+    "cell_dynamics": "bfgs",
+    "press_conv_thr": 0.5,
+    "k_points": "gamma"
+  },
+  "submit_settings": {
+    "account": "stf243",
+    "nodes": 1,
+    "walltime": "1:00:00",
+    "ntasks": 8,
+    "cpus_per_task": 7,
+    "gpus_per_task": 1,
+    "modules": [
+      "gcc-native/14.2",
+      "cray-mpich/9.1.0",
+      "rocm/7.0.2",
+      "q-e-sirius/1.0.2-mpi-omp"
+    ]
+  },
+  "energies": {},
+  "formation_results": {},
+  "missing": {
+    "UO2": [
+      "compound total energy for UO2",
+      "reference total energy for U (U)",
+      "reference total energy for O (O2)"
+    ]
+  }
+}

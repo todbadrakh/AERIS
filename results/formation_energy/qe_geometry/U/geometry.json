@@ -1,0 +1,54 @@
+{
+  "phase": "U",
+  "source": "generated:elemental-orthorhombic-alpha",
+  "cell_units": "angstrom",
+  "cell_parameters": [
+    [
+      2.854,
+      0,
+      0
+    ],
+    [
+      0,
+      5.869,
+      0
+    ],
+    [
+      0,
+      0,
+      4.955
+    ]
+  ],
+  "atomic_position_units": "crystal",
+  "atomic_positions": [
+    {
+      "element": "U",
+      "x": 0,
+      "y": 0.102,
+      "z": 0.25,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "U",
+      "x": 0.5,
+      "y": 0.398,
+      "z": 0.25,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "U",
+      "x": 0.5,
+      "y": 0.602,
+      "z": 0.75,
+      "coordinate_type": "crystal"
+    },
+    {
+      "element": "U",
+      "x": 0,
+      "y": 0.898,
+      "z": 0.75,
+      "coordinate_type": "crystal"
+    }
+  ],
+  "notes": "Generated orthorhombic-alpha starting geometry for elemental reference. Relax and confirm this is the intended reference phase."
+}

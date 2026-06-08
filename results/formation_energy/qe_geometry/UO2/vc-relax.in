@@ -1,0 +1,45 @@
+&CONTROL
+  prefix = 'UO2.vc-relax'
+  pseudo_dir = '~/sample-pseudo-dir'
+  calculation = 'vc-relax'
+  forc_conv_thr = 1.0d-4
+  nstep = 200
+/
+
+&SYSTEM
+  ibrav = 0
+  nat =  3
+  ntyp = 2
+  ecutwfc = 30
+  ecutrho = 120
+  occupations = 'smearing'
+  smearing = 'mv'
+  degauss = 0.01
+/
+
+&ELECTRONS
+  conv_thr = 1.0d-8
+  mixing_beta = 0.2
+/
+
+&IONS
+  ion_dynamics = 'bfgs'
+/
+
+&CELL
+  cell_dynamics = 'bfgs'
+  press_conv_thr = 0.5
+/
+
+CELL_PARAMETERS angstrom
+   3.8565670000   0.0000000000   0.0000000000
+   1.9282835000   3.3398849934   0.0000000000
+   1.9282835000   1.1132949978   3.1488737696
+ATOMIC_SPECIES
+  U    238.029000  U.pbe-spfn-kjpaw_psl.1.0.0.UPF
+  O    15.999000  O.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  U    0.5000000000  0.5000000000  0.5000000000
+  O    0.2500000000  0.2500000000  0.2500000000
+  O    0.7500000000  0.7500000000  0.7500000000
+K_POINTS gamma
